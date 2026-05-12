@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "176463668788",
+    "project_id": "studies-6c9a5",
+    "storage_bucket": "studies-6c9a5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176463668788:android:e057d238c64ee531f68c61",
+        "android_client_info": {
+          "package_name": "com.example.compose_criar_produto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7kemeBqEiTTP39TiHceJgDp_6UnljFNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176463668788:android:13c7b6691e291515f68c61",
+        "android_client_info": {
+          "package_name": "com.example.fypot"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7kemeBqEiTTP39TiHceJgDp_6UnljFNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176463668788:android:815ae96c6453efaaf68c61",
+        "android_client_info": {
+          "package_name": "com.example.studies"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7kemeBqEiTTP39TiHceJgDp_6UnljFNc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
