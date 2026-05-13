@@ -48,6 +48,7 @@ class MainActivity : ComponentActivity() {
         val currentUser: FirebaseUser? = auth.currentUser
         if(currentUser!=null){
             // navegar a home
+
         }
     }
 }
