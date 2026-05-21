@@ -35,7 +35,7 @@ import com.example.fypot.ui.theme.Black
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable
-fun LoginScreen(auth: FirebaseAuth){
+fun LoginScreen(auth: FirebaseAuth, navigateToHome:() -> Unit){
     var email by remember { mutableStateOf("")}
     var password by remember { mutableStateOf("")}
     Column(modifier = Modifier
@@ -80,6 +80,7 @@ fun LoginScreen(auth: FirebaseAuth){
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                 if(task.isSuccessful){
                     Log.i("ariss", "LOGIN OK")
+                    navigateToHome()
                 }else{
                     Log.i("aris", "NO LOGIN")
                 }

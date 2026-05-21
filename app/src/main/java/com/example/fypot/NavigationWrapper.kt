@@ -4,14 +4,16 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.fypot.presentation.home.HomeScreen
 import com.example.fypot.presentation.initial.InitialScreen
 import com.example.fypot.presentation.login.LoginScreen
 import com.example.fypot.presentation.signup.SignUpScreen
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 @Composable
 
-fun NavigationWrapper(navHostController: NavHostController, auth: FirebaseAuth){
+fun NavigationWrapper(navHostController: NavHostController, auth: FirebaseAuth, db: FirebaseFirestore){
 
     NavHost(navController = navHostController, startDestination = "initial"){
         composable("initial"){
@@ -21,13 +23,15 @@ fun NavigationWrapper(navHostController: NavHostController, auth: FirebaseAuth){
             )
         }
         composable("login"){
-            LoginScreen(auth)
+            LoginScreen(auth){
+                navHostController.navigate("home")
+            }
         }
         composable("signup"){
             SignUpScreen(auth)
         }
         composable("home"){
-            HomeScreen()
+            HomeScreen(db)
         }
     }
 
