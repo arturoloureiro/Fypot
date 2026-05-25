@@ -1,5 +1,6 @@
 package com.example.fypot.presentation.home
 
+import android.net.Uri
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -14,6 +15,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -28,46 +30,48 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
+import androidx.compose.runtime.State
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+
 //@Preview
 @Composable
-fun HomeScreen(db: FirebaseFirestore, viewmodel: HomeViewModel = viewModel()){
-    val db = Firebase.firestore // uma instância do Firebase
+fun HomeScreen(viewmodel: HomeViewmodel = HomeViewmodel()){
+
+    val artists: State<List<Artist>> = viewmodel.artist.collectAsState()
+
     Column(modifier = Modifier
         .fillMaxSize()
         .background(Black)
     ) {
-        Text("Popular artist",
+        Text(
+            "Popular artist",
             color = Color.White,
             fontWeight = FontWeight.Bold,
             fontSize = 30.sp,
             modifier = Modifier.padding(16.dp)
         )
-    }
 
-    /*LazyRow() {
-        items(artists){
+        LazyRow() {
+            items(artists.value) {
+                ArtistItem(it)
 
+            }
         }
-    }*/
-
-    Button(onClick = {
-        //createArtit(db)
-    }) {
-        Text("Adicionar artista")
     }
-
-
 }
 
 @Composable
 fun ArtistItem(artist: Artist){
     Column {
         AsyncImage(
-            model = artist.image,
+            model = Uri.decode(artist.image),
             contentDescription = "Artist image",
+            modifier = Modifier.size(150.dp),
+            contentScale = ContentScale.Crop
         )
         Spacer(modifier = Modifier.height(4.dp))
-        Text(text = artist.name, color = Color.White)
+        Text(text = artist.name.orEmpty(), color = Color.White)
     }
 }
 
@@ -78,7 +82,7 @@ fun ArtistItemPreview(){
         "Pepe",
         "El meior",
         "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Wyspa_%C5%9Bw._Jerzego_w_Pera%C5%9Bcie_02.jpg/960px-Wyspa_%C5%9Bw._Jerzego_w_Pera%C5%9Bcie_02.jpg",
-        emptyList()
+        //emptyList()
     )
 }
 
